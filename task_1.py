@@ -1,5 +1,3 @@
-import collections
-
 def sort_words(s: str) -> str:
     """
     Returns words sorted by decreasing frequency of occurrence in the string.
@@ -11,7 +9,9 @@ def sort_words(s: str) -> str:
         str: String with words sorted by decreasing frequency
     """
     words = s.split()
-    counter = collections.Counter(words)
+    counter = {}
+    for word in words:
+        counter[word] = counter.get(word, 0) + 1
     sorted_words = sorted(counter.keys(), key=lambda x: counter[x], reverse=True)
     return '\n'.join(sorted_words)
 
